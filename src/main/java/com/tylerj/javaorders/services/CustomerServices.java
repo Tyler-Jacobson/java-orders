@@ -5,11 +5,20 @@ import com.tylerj.javaorders.models.Customer;
 import java.util.List;
 
 public interface CustomerServices {
-    Customer save(Customer customer);
+
 
     List<Customer> findAllOrders();
 
     Customer findCustomerById(long id);
 
     List<Customer> findCustomersByNameLike(String name);
+
+
+
+    Customer save(Customer customer);
+
+    Customer update(Customer customer, long id);
+
+    void delete(long id);
+
 }

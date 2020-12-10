@@ -25,6 +25,7 @@ public class Order {
     private String orderdescription;
 
     @ManyToMany
+    @Column(nullable = false)
     @JoinTable(name = "orderspayments",
             joinColumns = @JoinColumn(name = "ordnum"),
             inverseJoinColumns = @JoinColumn(name = "paymentid"))

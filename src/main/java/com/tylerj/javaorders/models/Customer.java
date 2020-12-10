@@ -8,21 +8,40 @@ import java.util.List;
 
 @Entity
 @Table(name = "customers")
+@JsonIgnoreProperties(value = {"hasvalueforopeningamt", "hasvalueforrecieveamt", "hasvalueforpaymentamt", "hasvalueforoutstandingamt"})
 public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
     private long custcode;
+
     private String custname;
+
     private String custcity;
+
     private String workingarea;
+
     private String custcountry;
+
     private String grade;
+
+    @Transient
+    public boolean hasvalueforopeningamt = false;
     private double openingamt;
+
+    @Transient
+    public boolean hasvalueforrecieveamt = false;
     private double receiveamt;
+
+    @Transient
+    public boolean hasvalueforpaymentamt = false;
     private double paymentamt;
+
+    @Transient
+    public boolean hasvalueforoutstandingamt = false;
     private double outstandingamt;
+
     private String phone;
     
     @ManyToOne
@@ -106,6 +125,7 @@ public class Customer {
     }
 
     public void setOpeningamt(double openingamt) {
+        hasvalueforopeningamt = true;
         this.openingamt = openingamt;
     }
 
@@ -114,6 +134,7 @@ public class Customer {
     }
 
     public void setReceiveamt(double receiveamt) {
+        hasvalueforrecieveamt = true;
         this.receiveamt = receiveamt;
     }
 
@@ -122,6 +143,7 @@ public class Customer {
     }
 
     public void setPaymentamt(double paymentamt) {
+        hasvalueforpaymentamt = true;
         this.paymentamt = paymentamt;
     }
 
@@ -130,6 +152,7 @@ public class Customer {
     }
 
     public void setOutstandingamt(double outstandingamt) {
+        hasvalueforoutstandingamt = true;
         this.outstandingamt = outstandingamt;
     }
 
